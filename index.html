@@ -35,18 +35,18 @@
         Kémiai Elemek
         </title>
 
-    <h1>CSV fálj beolvasás Pandával PyScript felhasználásával</h1>
+    <h1>TXT fálj beolvasás sqlite3-al és PyScript felhasználásával</h1>
 
     <body>
         <strong><p>A mai nap dátuma: <div id='today'></div></p></strong>
         <div class="container">
             <form>
                 <fieldset>
-                    <legend style="margin-top: 25px">Kémiai elem kereső <i>(Alpha version)</i></legend>
+                    <legend style="margin-top: 25px">Kémiai elem kereső <i>(Gamma version)</i></legend>
                     <hr>
-                    <legend style="margin-top: 25px">Légyszíves <strong>írj be egy vegyjelet</strong> <i>a keresőbe</i> <strong>ezután nyomd meg </strong>"Keres" gombot!</legend>
+                    <legend style="margin-top: 25px">Légyszíves <strong>írj be nevet,rendszámot,vegyjelet,atomtömeget stb...</strong> <i>a keresőbe</i> <strong>ezután nyomd meg </strong>"Keres" gombot!</legend>
                     <hr>
-                    <legend style="margin-top: 25px">PL: Au</legend>
+                    <legend style="margin-top: 25px">PL: Au vagy Arany vagy 11 vagy </legend>
                     <br>
                     <br>
             
@@ -202,6 +202,8 @@
         for sor in kereso:
             lista1.append(sor)
 
+        
+
         if len(lista1) > 0:
             jo = True
             kimenet.write(lista1[0][1])
@@ -213,18 +215,23 @@
             kimenet7.write(lista1[0][6])
             message.write("Feldolgozás kész! °˖✧◝(⁰▿⁰)◜✧˖°")
 
+        if len(lista1) == 0:
+            if vegyjel.isalpha():
+                message.write("HIBA: Ismeretlen szöveges érték! (⇀‸↼‶)")
+            elif vegyjel.isalpha() == False:
+                message.write(f"Ismeretlen szám érték! (⇀‸↼‶)")
+      
+        
         if vegyjel == "":
                 message.write("A semmit nem tudom meg keresni!  (--_--)")
+                kimenet.write("")
+                kimenet2.write("") 
+                kimenet3.write("")
+                kimenet4.write("")
+                kimenet5.write("")
+                kimenet6.write("")
+                kimenet7.write("")
 
-        elif vegyjel.isalpha():
-                message.write("HIBA: Ismeretlen vegyjel (⇀‸↼‶)")
-        
-        elif vegyjel.isalpha() == False:
-            message.write(f"A vegyjelekbe mióta vannak számok? {vegyjel}!?\nBetüket kértem nem számokat!")
-      
-        if jo:
-            message.write("Feldolgozás kész! °˖✧◝(⁰▿⁰)◜✧˖°")
-        
 
            
                 
