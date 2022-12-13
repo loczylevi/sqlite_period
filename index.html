@@ -146,6 +146,8 @@
 
     <py-script>
     import sqlite3
+    import datetime as dt
+    pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
     from pyodide.http import open_url
     conn = sqlite3.connect(':memory:')
     cur = conn.cursor()
